@@ -35,4 +35,5 @@ alert("Copied the text: " + username);
       </div>
     </div>
   );
+  },
 });
