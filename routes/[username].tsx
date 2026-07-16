@@ -15,13 +15,13 @@ export default define.page<typeof handler>(function Page({ data }) {
   return (
     <div class="px-4 py-8 mx-auto fresh-gradient min-h-screen">
       <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
-        <h1 class="text-4xl font-bold mb-2">Your RSS Link is Ready!</h1>
+        <h1 class="text-4xl font-bold mb-8">Your RSS Link is Ready!</h1>
         <p class="text-gray-600 mb-6 pb-10">Click below to copy your YouTube RSS Feed URL.</p>
 
         {/* Pass the server-side parameter into your interactive island */}
         <CopyLink channelId={channelId} />
 
-        <a href="/" class="mt-8 text-sm text-blue-500 hover:underline">
+        <a href="/" class="mt-16 text-sm text-blue-500 hover:underline">
            Go to Home page
         </a>
       </div>
