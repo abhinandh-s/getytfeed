@@ -5,8 +5,7 @@ export const handler = define.handlers({
   GET(ctx) {
     const channelId = ctx.params.username;
     
-    // Pass the channelId to the page component via ctx.render
-    return ctx.render({ channelId });
+    return { data: { channelId } };
   },
 });
 
