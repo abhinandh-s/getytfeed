@@ -1,18 +1,38 @@
 import type { Signal } from "@preact/signals";
 import { Button } from "../components/Button.tsx";
 
-interface CounterProps {
+interface CopyProps {
   count: Signal<number>;
 }
 
-export default function Counter(props: CounterProps) {
-  return (
-    <div class="flex gap-8 py-6">
-      <Button id="decrement" onClick={() => props.count.value -= 1}>-1</Button>
-      <p class="text-3xl tabular-nums">{props.count}</p>
-      <Button id="increment" onClick={() => props.count.value += 1}>+1</Button>
-    </div>
-  );
+export default function CopyLink(props: CopyProps) {
+      const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(username);
+alert("Copied the text: " + username);
+    } catch (err) {
+      console.error("Failed to copy: ", err);
+    }
+  };
+
+    return (
+      // <div class="px-4 py-8 mx-auto fresh-gradient min-h-screen">
+      // <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
+       // <img
+        //  class="my-6"
+       //   src="/logo.svg"
+         // width="128"
+        //  height="128"
+         // alt="the Fresh logo: a sliced lemon dripping with juice"
+      //  />
+        <h1 class="text-4xl font-bold">Just provide @username and get RSS link for that channel.</h1>
+        <input type="text" value={username} id="myInput">
+         <button onClick={handleCopy}>
+        {copied.value ? "Copied! ✓" : "Copy Link"}
+      </button>
+  //    </div>
+  //  </div>
+    );
 }
 
 export function extractHandle(input: string): string {
