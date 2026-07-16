@@ -3,9 +3,7 @@ import CopyLink from "../islands/Copier.tsx";
 
 export const handler = define.handlers({
   GET(ctx) {
-    const channelId = ctx.params.username;
-    
-    return { data: { channelId } };
+    return { data: { ctx.params.username } };
   },
 });
 
