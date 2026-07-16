@@ -3,7 +3,7 @@ import CopyLink from "../islands/InputBar.tsx";
 
 export const handler = define.handlers({
   GET(ctx) {
-    const username = ctx.params.username; 
+    const channelId = ctx.params.username; 
     const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(username);
@@ -25,9 +25,7 @@ alert("Copied the text: " + username);
       //  />
         <h1 class="text-4xl font-bold">Just provide @username and get RSS link for that channel.</h1>
         <input type="text" value={username} id="myInput">
-         <button onClick={handleCopy}>
-        {copied.value ? "Copied! ✓" : "Copy Link"}
-      </button>
+         <CopyInput channelId={channelId} />
   //    </div>
   //  </div>
     );
