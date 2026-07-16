@@ -27,7 +27,7 @@ alert("Copied the text: " + username);
         <p class="text-gray-600 mb-6">Click below to copy your YouTube RSS Feed URL.</p>
         
         {/* Pass the server-side parameter cleanly into your interactive island */}
-        <CopyInput channelId={channelId} />
+        <CopyLink channelId={channelId} />
         
         <a href="/" class="mt-8 text-sm text-blue-500 hover:underline">
           ← Convert another channel
