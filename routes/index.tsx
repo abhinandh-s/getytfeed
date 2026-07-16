@@ -19,18 +19,14 @@ export default define.page<typeof handlers>(function Home(ctx) {
           height="128"
           alt="the Fresh logo: a sliced lemon dripping with juice"
         />
-        <h1 class="text-4xl font-bold">Welcome to Fresh</h1>
-        <p class="my-4">
-          Try updating this message in the
-          <code class="mx-2">./routes/index.tsx</code> file, and refresh.
-        </p>
-        <Counter count={count} />
+        <h1 class="text-4xl font-bold">Just provide @username and get RSS link for that channel.</h1>
+        <form method="post">
+        <input type="username" name="username" value="" />
+        <button type="submit">Submit</button>
+      </form>
       </div>
     </div>
-    <form method="post">
-        <input type="email" name="email" value="" />
-        <button type="submit">Subscribe</button>
-      </form>
+    
   </>
   );
 });
@@ -41,7 +37,7 @@ export const handlers = define.handlers({
   },
   async POST(ctx) {
     const form = await ctx.req.formData();
-    const email = form.get("email")?.toString();
+    const email = form.get("username")?.toString();
 
     // Add email to list.
 
