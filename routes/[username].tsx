@@ -14,7 +14,7 @@ export const handler = define.handlers({
           alt="the Fresh logo: a sliced lemon dripping with juice"
         />
         <h1 class="text-4xl font-bold">Just provide @username and get RSS link for that channel.</h1>
-        <input type="text" value=`${username}` id="myInput">
+        <input type="text" value={username} id="myInput">
       </div>
     </div>
     );
