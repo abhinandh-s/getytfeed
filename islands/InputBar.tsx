@@ -22,6 +22,7 @@ export default function CopyInput({ channelId }: CopyInputProps) {
     <div class="flex gap-2 w-full max-w-md mt-4">
       <input
         type="text"
+        size="50"
         value={rssUrl}
         readOnly
         class="flex-1 px-4 py-2 border rounded-md shadow-sm bg-gray-50 text-gray-600"
