@@ -1,5 +1,5 @@
 import { define } from "../utils.ts";
-import CopyLink from "../islands/InputBar.tsx";
+import CopyLink from "../islands/Copier.tsx";
 
 export const handler = define.handlers({
   GET(ctx) {
