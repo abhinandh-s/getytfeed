@@ -1,11 +1,6 @@
 import { define } from "../utils.ts";
 
 export default define.page<typeof handlers>(function Home(ctx) {
-  const count = useSignal(3);
-
-  ctx.state.title = count.value + " Fresh Counter" +
-    (Math.abs(count.value) === 1 ? "" : "s");
-
   return (
 <>
     <div class="px-4 py-8 mx-auto fresh-gradient min-h-screen">
