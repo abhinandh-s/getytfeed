@@ -30,7 +30,7 @@ export default define.page<typeof handler>(function Page({ data }) {
         <CopyLink channelId={channelId} />
 
         <a href="/" class="mt-8 text-sm text-blue-500 hover:underline">
-          < Convert another channel
+           Go to Home page
         </a>
       </div>
     </div>
