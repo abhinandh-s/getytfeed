@@ -1,4 +1,4 @@
-import type { Signal } from "@preact/signals";
+import type { useSignal } from "@preact/signals";
 interface CopyInputProps {
   channelId: string;
 }
