@@ -14,12 +14,12 @@ export default define.page<typeof handler>(function Page({ data }) {
   return (
     <div class="p-8 min-h-screen">
       <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
-        <h1 class="text-2xl font-bold mb-8">Your RSS Link is Ready!</h1>
-        <p class="text-gray-600 mb-6 pb-10">Click below to copy your YouTube RSS Feed URL.</p>
+        <h1 class="text-2xl font-bold">Your RSS Link is Ready!</h1>
+        <p class="text-gray-600">Click below to copy your YouTube RSS Feed URL.</p>
 
         <CopyLink channelId={channelId} />
 
-        <a href="/" class="mt-16 text-sm text-blue-500 hover:underline">
+        <a href="/" class="text-sm text-green-500 hover:underline">
            Go to Home page
         </a>
       </div>
