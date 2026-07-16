@@ -1,69 +1,38 @@
 import type { Signal } from "@preact/signals";
-import { Button } from "../components/Button.tsx";
-
-interface CopyProps {
-  count: Signal<number>;
+interface CopyInputProps {
+  channelId: string;
 }
 
-export default function CopyLink(props: CopyProps) {
-      const handleCopy = async () => {
+export default function CopyInput({ channelId }: CopyInputProps) {
+  const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+  const copied = useSignal(false);
+
+  const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(username);
-alert("Copied the text: " + username);
+      await navigator.clipboard.writeText(rssUrl);
+      copied.value = true;
+      setTimeout(() => (copied.value = false), 2000);
     } catch (err) {
       console.error("Failed to copy: ", err);
     }
   };
 
-    return (
-      // <div class="px-4 py-8 mx-auto fresh-gradient min-h-screen">
-      // <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
-       // <img
-        //  class="my-6"
-       //   src="/logo.svg"
-         // width="128"
-        //  height="128"
-         // alt="the Fresh logo: a sliced lemon dripping with juice"
-      //  />
-        <h1 class="text-4xl font-bold">Just provide @username and get RSS link for that channel.</h1>
-        <input type="text" value={username} id="myInput">
-         <button onClick={handleCopy}>
+  return (
+    <div class="flex gap-2 w-full max-w-md mt-4">
+      <input
+        type="text"
+        value={rssUrl}
+        readOnly
+        class="flex-1 px-4 py-2 border rounded-md shadow-sm bg-gray-50 text-gray-600"
+      />
+      <button
+        onClick={handleCopy}
+        class={`px-6 py-2 font-medium rounded-md text-white transition-colors ${
+          copied.value ? "bg-green-600" : "bg-blue-600 hover:bg-blue-700"
+        }`}
+      >
         {copied.value ? "Copied! ✓" : "Copy Link"}
       </button>
-  //    </div>
-  //  </div>
-    );
-}
-
-export function extractHandle(input: string): string {
-  const atIndex = input.lastIndexOf('@')
-  return atIndex === -1 ? input : input.slice(atIndex + 1)
-}
-
-console.log('---- tests ----')
-console.log(await getYoutubeChannelId('https://youtube.com/@judosloth'))
-console.log(await getYoutubeChannelId('@pewdiepie'))
-console.log(await getYoutubeChannelId('jacksepticeye'))
-console.log('---------------')
-
-// Function to fetch YouTube Channel ID
-export async function getYoutubeChannelId(username: string): Promise<string | null> {
-  const apiKey = Deno.env.get('YOUTUBE_API_KEY')
-  // const cleanHandle = username.startsWith("@") ? username : `@${username}`;
-  const cleanHandle = extractHandle(username)
-  const url = `https://www.googleapis.com/youtube/v3/channels?part=id&forHandle=@${cleanHandle}&key=${apiKey}`
-
-  try {
-    const response = await fetch(url)
-    const data = await response.json()
-
-    if (data.items && data.items.length > 0) {
-      return data.items[0].id
-    } else {
-      return null
-    }
-  } catch (error) {
-    console.error('YouTube API Error:', error)
-    return null
-  }
+    </div>
+  );
 }
