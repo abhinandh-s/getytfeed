@@ -1,6 +1,4 @@
-import { useSignal } from "@preact/signals";
 import { define } from "../utils.ts";
-import Counter from "../islands/Counter.tsx";
 
 export default define.page<typeof handlers>(function Home(ctx) {
   const count = useSignal(3);
