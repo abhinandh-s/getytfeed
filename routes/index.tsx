@@ -45,7 +45,14 @@ const username = input.trim();
 
   const channelId = await getYoutubeChannelId(username);
 
+  const headers = new Headers();
+
   if (!channelId) {
+   headers.set("location", "/sorry");
+    return new Response(null, {
+      status: 303, // See Other
+      headers,
+    });
   //  reply("Sorry, I couldn't find a channel with that username/handle.")
   }
  // const rssUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
@@ -53,8 +60,8 @@ const username = input.trim();
 
 
     // Redirect user to thank you page.
-    const headers = new Headers();
-    headers.set("location", "/${channelId}");
+    
+    headers.set("location", `/${channelId}`);
     return new Response(null, {
       status: 303, // See Other
       headers,
