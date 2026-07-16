@@ -1,7 +1,7 @@
 import { useSignal } from "@preact/signals";
 import { define } from "../utils.ts";
 import Counter from "../islands/Counter.tsx";
-import getYoutubeChannelId from "../islands/inputBar.tsx";
+import getYoutubeChannelId from "../islands/InputBar.tsx";
 
 export default define.page<typeof handlers>(function Home(ctx) {
   const count = useSignal(3);
